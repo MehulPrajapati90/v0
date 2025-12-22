@@ -1,20 +1,8 @@
-"use client";
-
-import { Button } from '@/components/ui/button'
-import { SignInButton, SignOutButton, UserButton, useUser } from "@clerk/nextjs";
+import React from "react";
 
 const page = () => {
-    const user = useUser();
     return (
         <div className='min-h-screen w-full flex items-center justify-center'>
-            <UserButton />
-            <Button asChild>
-                {user.isSignedIn ? (
-                    <SignOutButton />
-                ) : (
-                    <SignInButton mode='modal' />
-                )}
-            </Button>
         </div>
     )
 }
