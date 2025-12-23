@@ -1,6 +1,5 @@
 import ProjectsForm from '@/components/home/project-form'
 import Image from 'next/image'
-import React from 'react'
 
 const Page = () => {
     return (

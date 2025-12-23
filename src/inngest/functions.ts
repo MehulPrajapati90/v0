@@ -3,9 +3,21 @@ import { gemini, createAgent } from "@inngest/agent-kit";
 
 export const helloWorld = inngest.createFunction(
     { id: "hello-world" },
-    { event: "test/hello.world" },
+    { event: "agent/hello" },
     async ({ event, step }) => {
-        await step.sleep("wait-a-moment", "1s");
-        return { message: `Hello World!` };
+
+        const helloAgent = createAgent({
+            name: "hello",
+            description: "A simple agent that says hello",
+            system: "You are a helpful assistant. Always greet with enthusiasm",
+            model: gemini({ model: "gemini-2.5-flash" })
+        });
+
+        const { output } = await helloAgent.run("Say hello to the user");
+
+        return {
+            // @ts-ignore
+            message: output[0]?.content
+        }
     },
 );
