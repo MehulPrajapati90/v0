@@ -1,4 +1,5 @@
 import { inngest } from "./client";
+import { gemini, createAgent } from "@inngest/agent-kit";
 
 export const helloWorld = inngest.createFunction(
     { id: "hello-world" },
